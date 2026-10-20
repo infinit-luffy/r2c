@@ -1,0 +1,34 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "real2sim-assets"
+version = "0.1.0"
+description = "Turn a holistic 3DGS / mesh scene scan into per-object, simulation-ready USD assets for Isaac Lab."
+readme = "README.md"
+requires-python = ">=3.10"
+license = { text = "MIT" }
+dependencies = [
+    "numpy",
+    "scipy",
+    "trimesh[easy]",
+    "plyfile",
+    "shapely",
+    "scikit-learn",
+    "pymeshfix",
+    "coacd",
+    "usd-core",
+    "rtree",
+]
+
+[project.optional-dependencies]
+verify = ["pybullet"]
+sam = ["torch", "sam2"]
+dev = ["pytest"]
+
+[project.scripts]
+r2s = "r2s.cli:main"
+
+[tool.setuptools.packages.find]
+include = ["r2s*"]
